@@ -1,0 +1,44 @@
+<ng-template appPlaceholder> </ng-template>
+<!-- <div class="container" > -->
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-6 ">
+            <!-- <div class="alert alert-danger" *ngIf="error" >
+                <p>{{ error }}</p>
+            </div> -->
+           
+            <!-- <app-alert [message]="error" *ngIf="error" (close)="handlerror()"></app-alert> -->
+            
+            <div *ngIf="isloading" style="text-align:center">
+                <app-loadingspinner></app-loadingspinner>
+            </div>
+            <form #authform="ngForm" (ngSubmit)="OnSubmit(authform)" *ngIf="!isloading">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                    type="text" 
+                    id="email" 
+                    class="form-control"
+                    ngModel
+                    name="email"
+                    requiresd
+                    email>
+                </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input 
+                    type="password" 
+                    id="password" 
+                    class="form-control"
+                    ngModel
+                    name="password"
+                    required
+                    minlength="6">
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit" [disabled]="!authform.valid">{{isloggedin ? 'Login' : 'Signup'}}</button> |
+                    <button class="btn btn-primary" (click)="Switchto()" type="button">Switch to {{isloggedin ? 'Signup' : 'Login'}} </button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- </div> -->
